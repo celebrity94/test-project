@@ -1,6 +1,6 @@
 ' use strict ';
 
-let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+let numberOfFilms = +prompt( 'Сколько фильмов вы уже посмотрели?', '' );
 let personalMovieDB = {
     count: numberOfFilms,
     movies: {},
@@ -9,12 +9,23 @@ let personalMovieDB = {
     privat: false,
 };
 
-let lastMov1 = prompt('Какой последний фильм посмотрели?');
-let rateMov1 = prompt('На сколько его оцените?');
-let lastMov2 = prompt('Какой последний фильм посмотрели?');
-let rateMov2 = prompt('На сколько его оцените?');
+for (let i=0; i<2; i++) {
+    let a = prompt( 'Какой последний фильм посмотрели?' ),
+        b = prompt( 'На сколько его оцените?' ); 
+    if (a != null && b != null && a != '' && b !='' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+    } else {
+        i--; 
+    }
+}
 
-personalMovieDB.movies[lastMov1] = rateMov1;
-personalMovieDB.movies[lastMov2] = rateMov2;
-    
+if (numberOfFilms < 10) {
+    alert( 'Просмотрено довольно мало фильмов' );
+}   else if (numberOfFilms > 10 && numberOfFilms <30 ) {
+        alert('Вы классический зритель');
+}
+    else {
+        alert('Вы киноман!');
+    }
+
 console.log(personalMovieDB);
